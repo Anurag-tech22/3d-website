@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MCODE - Landing Page</title>
+    <title>MCODE - Built for the Future</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Base Reset */
         * {
@@ -12,35 +16,48 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+            --bg-color: #050508;
+            --card-bg: rgba(18, 20, 29, 0.6);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+        }
+
         body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-color: #000000;
-            color: #e7e7e7;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
             min-height: 100vh;
-            line-height: 1.5;
+            line-height: 1.6;
             overflow-x: hidden;
+            position: relative;
         }
 
-        /* Decorative Blur Backgrounds */
-        .image-gradient {
+        /* Premium CSS Radial Gradients (No image file needed!) */
+        body::before {
+            content: '';
             position: absolute;
-            top: 0;
-            right: 0;
-            opacity: 0.5;
+            top: -10%;
+            right: -10%;
+            width: 70vw;
+            height: 70vw;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(5, 5, 8, 0) 70%);
             z-index: -1;
-            width: auto;
-            max-width: 50vw;
+            pointer-events: none;
         }
 
-        .layer-blur {
-            height: 0;
-            width: 30rem;
+        body::after {
+            content: '';
             position: absolute;
-            top: 20%;
-            right: 0;
-            box-shadow: 0 0 700px 15px rgba(255, 255, 255, 0.15);
-            rotate: -30deg;
+            bottom: -10%;
+            left: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.08) 0%, rgba(5, 5, 8, 0) 70%);
             z-index: -1;
+            pointer-events: none;
         }
 
         /* Container */
@@ -58,13 +75,17 @@
             justify-content: space-between;
             align-items: center;
             padding: 2rem 0;
-            z-index: 999;
+            border-bottom: 1px solid var(--border-color);
         }
 
         header .logo {
+            font-family: 'Outfit', sans-serif;
             font-size: 2.25rem;
-            font-weight: 300;
-            letter-spacing: 2px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         nav {
@@ -75,23 +96,156 @@
 
         nav a {
             font-size: 0.95rem;
-            color: #b3b3b3;
+            color: var(--text-secondary);
             letter-spacing: 0.1rem;
-            transition: color 0.2s ease;
+            transition: color 0.3s ease;
             text-decoration: none;
             text-transform: uppercase;
+            font-weight: 600;
         }
 
         nav a:hover {
             color: #ffffff;
         }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 0 5rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            margin-bottom: 1.5rem;
+        }
+
+        .gradient-text {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.25rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: #ffffff;
+            border: none;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #ffffff;
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            border-color: rgba(99, 102, 241, 0.5);
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 0 8rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(99, 102, 241, 0.3);
+            box-shadow: 0 10px 35px rgba(99, 102, 241, 0.1);
+        }
+
+        .card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #ffffff;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            border-top: 1px solid var(--border-color);
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            nav {
+                display: none; /* Mobile menu can be added later */
+            }
+        }
     </style>
 </head>
 <body>
-    <img class="image-gradient" src="gradient.png" alt="gradient">
-    <div class="layer-blur"></div>
-
     <div class="container">
+        <!-- Header -->
         <header>
             <h1 class="logo">MCODE</h1>
             <nav>
@@ -101,6 +255,37 @@
                 <a href="#">Contact</a>
             </nav>
         </header>
+
+        <!-- Hero -->
+        <section class="hero">
+            <h1>Build the Future with <span class="gradient-text">MCODE</span></h1>
+            <p>A high-performance software engineering framework designed to build clean, responsive, and secure modern web experiences.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">Get Started</a>
+                <a href="#" class="btn btn-secondary">Read Docs</a>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="features">
+            <div class="card">
+                <h3>Ultra Fast Performance</h3>
+                <p>Engineered with lightweight, modular assets to ensure maximum rendering speed and optimization.</p>
+            </div>
+            <div class="card">
+                <h3>Modern Design System</h3>
+                <p>Elegant card-based styling, glassmorphism, and fluent responsive layouts built-in.</p>
+            </div>
+            <div class="card">
+                <h3>Interactive & Safe</h3>
+                <p>Ready to deploy components with secure structures to safeguard your users and data.</p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2026 MCODE. All rights reserved.</p>
+        </footer>
     </div>
 </body>
 </html>
